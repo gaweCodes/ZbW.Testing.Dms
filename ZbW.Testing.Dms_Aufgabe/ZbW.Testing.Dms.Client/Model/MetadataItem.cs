@@ -1,6 +1,6 @@
 ﻿namespace ZbW.Testing.Dms.Client.Model
 {
-    internal class MetadataItem
+    public class MetadataItem
     {
         // TODO: Write your Metadata properties here
     }

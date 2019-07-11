@@ -4,11 +4,10 @@ using ZbW.Testing.Dms.Client.ViewModels;
 namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
 {
     [TestFixture]
-    internal class LoginTests
+    internal class LoginViewModelTests
     {
         private const string Username = "gabriel";
         private readonly string _invalidUsername = string.Empty;
-
         [Test]
         public void Login_HasUsername_IsTrue()
         {

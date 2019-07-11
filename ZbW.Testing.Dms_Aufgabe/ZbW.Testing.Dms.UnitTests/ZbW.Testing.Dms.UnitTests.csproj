@@ -51,7 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModelsTests\LoginTests.cs" />
+    <Compile Include="ViewModelsTests\DocumentDetailViewModelTests.cs" />
+    <Compile Include="ViewModelsTests\SearchViewModelTests.cs" />
+    <Compile Include="ViewModelsTests\MainViewModelTests.cs" />
+    <Compile Include="ViewModelsTests\LoginViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
