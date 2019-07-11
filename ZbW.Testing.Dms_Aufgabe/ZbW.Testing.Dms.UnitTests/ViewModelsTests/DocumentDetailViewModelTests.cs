@@ -72,38 +72,40 @@ namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
             Assert.That(typeItem, Is.EqualTo(Username));
         }
         [Test]
-        public void DocumentDetail_GetBezeichnung_IsUsername()
+        public void DocumentDetail_GetName_IsUsername()
         {
             // Arrange
-            var documentDetailViewModel = new DocumentDetailViewModel(Username, null);
-            documentDetailViewModel.Bezeichnung = Username;
+            var documentDetailViewModel = new DocumentDetailViewModel(Username, null) {Bezeichnung = Username};
 
             // Act
-            var result = documentDetailViewModel.Bezeichnung;
+            var name = documentDetailViewModel.Bezeichnung;
 
             // Arrange
-            Assert.That(result, Is.EqualTo(Username));
+            Assert.That(name, Is.EqualTo(Username));
         }
         [Test]
-        public void GetStichwoerter_Return_ValidUser()
+        public void DocumentDetail_GetKeyword_IsUsername()
         {
-            var sut = new DocumentDetailViewModel(ValidUser, null);
-            sut.Stichwoerter = ValidUser;
+            // Arrange
+            var documentDetailViewModel = new DocumentDetailViewModel(Username, null) {Stichwoerter = Username};
 
-            var result = sut.Stichwoerter;
+            // Act
+            var keyword = documentDetailViewModel.Stichwoerter;
 
-            Assert.That(result, Is.EqualTo(ValidUser));
+            // Assert
+            Assert.That(keyword, Is.EqualTo(Username));
         }
-
         [Test]
-        public void ValutaDatum_Get_TestDateTime()
+        public void DocumentDetail_GetValutaDateTime_IsEqualToNow()
         {
-            var sut = new DocumentDetailViewModel(ValidUser, null);
-            sut.ValutaDatum = _testDateTime;
+            // Arrange
+            var documentDetailViewModel = new DocumentDetailViewModel(Username, null) {ValutaDatum = _testDateTime};
 
-            var result = sut.ValutaDatum;
+            // Act
+            var valutaDate = documentDetailViewModel.ValutaDatum;
 
-            Assert.That(result, Is.EqualTo(_testDateTime));
+            // Assert
+            Assert.That(valutaDate, Is.EqualTo(_testDateTime));
         }
     }
 }

@@ -12,10 +12,9 @@ namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
         public void Login_HasUsername_IsTrue()
         {
             // Arrange
-            var loginViewModel = new LoginViewModel(null);
+            var loginViewModel = new LoginViewModel(null) {Benutzername = Username};
 
             // Act
-            loginViewModel.Benutzername = Username;
             var ableToLogin = loginViewModel.CmdLogin.CanExecute();
 
             // Assert
@@ -25,10 +24,9 @@ namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
         public void Login_NoUsername_IsFals()
         {
             // Arrange
-            var loginViewModel = new LoginViewModel(null);
+            var loginViewModel = new LoginViewModel(null) {Benutzername = _invalidUsername};
 
             // Act
-            loginViewModel.Benutzername = _invalidUsername;
             var ableToLogin = loginViewModel.CmdLogin.CanExecute();
 
             // Assert
