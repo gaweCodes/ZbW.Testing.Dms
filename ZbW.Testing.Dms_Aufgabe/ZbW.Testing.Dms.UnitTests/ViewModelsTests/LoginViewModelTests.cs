@@ -32,5 +32,29 @@ namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
             // Assert
             Assert.That(ableToLogin, Is.False);
         }
+        [Test]
+        public void Login_NoUsername_ReturnsFalse()
+        {
+            // Arrange
+            var loginViewModel = new LoginViewModel(null) { Benutzername = _invalidUsername };
+
+            // Act
+            var ableToLogin = loginViewModel.NoUsername();
+
+            // Assert
+            Assert.That(ableToLogin, Is.False);
+        }
+        [Test]
+        public void Login_CmdCancel_IsEnabled()
+        {
+            // Arrange
+            var loginViewModel = new LoginViewModel(null) { Benutzername = Username };
+
+            // Act
+            var ableToLogin = loginViewModel.CmdAbbrechen.CanExecute();
+
+            // Assert
+            Assert.That(ableToLogin, Is.True);
+        }
     }
 }

@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E7E559F5-E929-425E-90A2-5255A3CCFEC2}</ProjectGuid>
+    <ProjectGuid>{32B04042-01A5-4635-820E-142CC9F0A922}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZbW.Testing.Dms.UnitTests</RootNamespace>
-    <AssemblyName>ZbW.Testing.Dms.UnitTests</AssemblyName>
+    <RootNamespace>ZbW.Testing.Dms.IntegrationTests</RootNamespace>
+    <AssemblyName>ZbW.Testing.Dms.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FakeItEasy, Version=5.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeItEasy.5.1.1\lib\net45\FakeItEasy.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -50,22 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelTests\MetadataItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceTests\FileServiceTests.cs" />
-    <Compile Include="ViewModelsTests\DocumentDetailViewModelTests.cs" />
-    <Compile Include="ViewModelsTests\MainViewModelTests.cs" />
-    <Compile Include="ViewModelsTests\LoginViewModelTests.cs" />
-    <Compile Include="ViewModelsTests\SearchViewModelTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Services\DocumentServiceTests.cs" />
+    <Compile Include="Services\FileServiceTests.cs" />
+    <Compile Include="Services\XmlServiceTests.cs" />
+    <Compile Include="ViewModelTests\SearchViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZbW.Testing.Dms.Client\ZbW.Testing.Dms.Client.csproj">
       <Project>{bad666d8-64bf-467f-b2e9-6c1dc66d2beb}</Project>
       <Name>ZbW.Testing.Dms.Client</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

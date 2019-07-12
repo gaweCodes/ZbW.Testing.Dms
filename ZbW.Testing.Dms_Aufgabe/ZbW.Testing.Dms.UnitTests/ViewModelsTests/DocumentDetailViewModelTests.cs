@@ -84,6 +84,18 @@ namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
             Assert.That(name, Is.EqualTo(Username));
         }
         [Test]
+        public void DocumentDetail_Erfassungsdatum_IsDateMin()
+        {
+            // Arrange
+            var documentDetailViewModel = new DocumentDetailViewModel(Username, null) { Erfassungsdatum = DateTime.MinValue };
+
+            // Act
+            var create = documentDetailViewModel.Erfassungsdatum;
+
+            // Arrange
+            Assert.That(create, Is.EqualTo(DateTime.MinValue));
+        }
+        [Test]
         public void DocumentDetail_GetKeyword_IsUsername()
         {
             // Arrange

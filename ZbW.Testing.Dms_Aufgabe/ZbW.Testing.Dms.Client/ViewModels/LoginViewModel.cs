@@ -26,18 +26,21 @@ namespace ZbW.Testing.Dms.Client.ViewModels
             }
         }
         private bool OnCanLogin() => !string.IsNullOrEmpty(Benutzername);
-        private void OnCmdAbbrechen() => Application.Current.Shutdown();
+        private static void OnCmdAbbrechen() => Application.Current.Shutdown();
         private void OnCmdLogin()
         {
-            if (string.IsNullOrEmpty(Benutzername))
+            if (NoUsername())
             {
                 MessageBox.Show("Bitte tragen Sie einen Benutzernamen ein...");
                 return;
             }
-
             var searchView = new MainView(Benutzername);
             searchView.Show();
             _loginView.Close();
+        }
+        public bool NoUsername()
+        {
+            return !string.IsNullOrEmpty(Benutzername);
         }
     }
 }

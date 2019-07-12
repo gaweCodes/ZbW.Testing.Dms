@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using Microsoft.Win32;
 using Prism.Commands;
 using Prism.Mvvm;
+using ZbW.Testing.Dms.Client.Model;
 using ZbW.Testing.Dms.Client.Repositories;
+using ZbW.Testing.Dms.Client.Services;
+using static System.String;
 
 namespace ZbW.Testing.Dms.Client.ViewModels
 {
@@ -19,12 +23,14 @@ namespace ZbW.Testing.Dms.Client.ViewModels
         private string _stichwoerter;
         private List<string> _typItems;
         private DateTime? _valutaDatum;
+        private readonly DocumentService _documentService;
         public DocumentDetailViewModel(string benutzer, Action navigateBack)
         {
             _navigateBack = navigateBack;
             Benutzer = benutzer;
             Erfassungsdatum = DateTime.Now;
             TypItems = ComboBoxItems.Typ;
+            _documentService = new DocumentService();
             CmdDurchsuchen = new DelegateCommand(OnCmdDurchsuchen);
             CmdSpeichern = new DelegateCommand(OnCmdSpeichern);
         }
@@ -79,8 +85,32 @@ namespace ZbW.Testing.Dms.Client.ViewModels
         }
         private void OnCmdSpeichern()
         {
-            // TODO: Add your Code here
+            if (!HasAllRequiredFieldSet())
+            {
+                MessageBox.Show("Es müssen alle Pflichtfelder ausgefüllt werden!");
+                return;
+            }
+            if (!IsDocumentSelected())
+            {
+                MessageBox.Show("Es muss ein Dokument ausgewählt sein.");
+                return;
+            }
+            _documentService.AddDocumentToDms(CreateMetadataItem());
             _navigateBack();
         }
+        private MetadataItem CreateMetadataItem()
+        {
+            var metadataItem = new MetadataItem(ValutaDatum.Value, SelectedTypItem, Stichwoerter)
+            {
+                Benutzer = Benutzer,
+                Bezeichnung = Bezeichnung,
+                FilePath = _filePath,
+                IsRemoveFileEnabled = IsRemoveFileEnabled,
+                Erfassungsdatum = DateTime.Now
+            };
+            return metadataItem;
+        }
+        private bool IsDocumentSelected() => !IsNullOrEmpty(_filePath);
+        private bool HasAllRequiredFieldSet() => !IsNullOrEmpty(Bezeichnung) && ValutaDatum.HasValue && !IsNullOrEmpty(SelectedTypItem);
     }
 }

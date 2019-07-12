@@ -3,6 +3,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using ZbW.Testing.Dms.Client.Model;
 using ZbW.Testing.Dms.Client.Repositories;
+using ZbW.Testing.Dms.Client.Services;
 
 namespace ZbW.Testing.Dms.Client.ViewModels
 {
@@ -13,12 +14,15 @@ namespace ZbW.Testing.Dms.Client.ViewModels
         private string _selectedTypItem;
         private string _suchbegriff;
         private List<string> _typItems;
+        private readonly DocumentService _documentService;
         public SearchViewModel()
         {
             TypItems = ComboBoxItems.Typ;
             CmdSuchen = new DelegateCommand(OnCmdSuchen);
             CmdReset = new DelegateCommand(OnCmdReset);
             CmdOeffnen = new DelegateCommand(OnCmdOeffnen, OnCanCmdOeffnen);
+            _documentService = new DocumentService();
+            FilteredMetadataItems = _documentService.GetAllMetadataItems();
         }
         public DelegateCommand CmdOeffnen { get; }
         public DelegateCommand CmdSuchen { get; }
@@ -52,17 +56,13 @@ namespace ZbW.Testing.Dms.Client.ViewModels
             }
         }
         private bool OnCanCmdOeffnen() => SelectedMetadataItem != null;
-        private void OnCmdOeffnen()
-        {
-            // TODO: Add your Code here
-        }
-        private void OnCmdSuchen()
-        {
-            // TODO: Add your Code here
-        }
+        private void OnCmdOeffnen() => _documentService.OpenFile(SelectedMetadataItem);
+        private void OnCmdSuchen() => FilteredMetadataItems = _documentService.FilterMetadataItems(SelectedTypItem, Suchbegriff);
         private void OnCmdReset()
         {
-            // TODO: Add your Code here
+            FilteredMetadataItems = _documentService.MetadataItems;
+            Suchbegriff = string.Empty;
+            SelectedTypItem = null;
         }
     }
 }
