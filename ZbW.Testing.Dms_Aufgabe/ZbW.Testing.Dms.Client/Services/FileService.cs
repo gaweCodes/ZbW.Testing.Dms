@@ -1,10 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using ZbW.Testing.Dms.Client.Exceptions;
 
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.UnitTests")]
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.IntegrationTests")]
 namespace ZbW.Testing.Dms.Client.Services
 {
-    public class FileService
+    internal class FileService
     {
         public FileTestable FileTestable { private get; set; }
         public void CreateValutaFolderIfNotExists(string path) => Directory.CreateDirectory(path);

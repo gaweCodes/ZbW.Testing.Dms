@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace ZbW.Testing.Dms.Client.Model
 {
@@ -12,9 +13,7 @@ namespace ZbW.Testing.Dms.Client.Model
         public bool IsRemoveFileEnabled { get; set; }
         public string Type { get; set; }
         public DateTime ValutaDatum { get; set; }
-        public MetadataItem()
-        {
-        }
+        public MetadataItem() { }
         public MetadataItem(DateTime valutaDatum, string type, string keysord = "")
         {
             ValutaDatum = valutaDatum;

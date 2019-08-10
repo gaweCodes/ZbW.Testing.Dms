@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Prism.Mvvm;
 using ZbW.Testing.Dms.Client.Model;
 
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.UnitTests")]
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.IntegrationTests")]
 namespace ZbW.Testing.Dms.Client.Services
 {
-    public class DocumentService : BindableBase
+    internal class DocumentService : BindableBase
     {
         private const string FileTypeName = "Content";
         private const string MetasataTypeName = "Metadata";

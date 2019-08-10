@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using Microsoft.Win32;
 using Prism.Commands;
@@ -9,9 +10,11 @@ using ZbW.Testing.Dms.Client.Repositories;
 using ZbW.Testing.Dms.Client.Services;
 using static System.String;
 
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.UnitTests")]
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.IntegrationTests")]
 namespace ZbW.Testing.Dms.Client.ViewModels
 {
-    public class DocumentDetailViewModel : BindableBase
+    internal class DocumentDetailViewModel : BindableBase
     {
         private readonly Action _navigateBack;
         private string _benutzer;

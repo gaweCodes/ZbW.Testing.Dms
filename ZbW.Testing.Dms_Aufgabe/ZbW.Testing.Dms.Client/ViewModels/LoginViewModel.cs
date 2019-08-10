@@ -1,11 +1,14 @@
-﻿using System.Windows;
+﻿using System.Runtime.CompilerServices;
+using System.Windows;
 using Prism.Commands;
 using Prism.Mvvm;
 using ZbW.Testing.Dms.Client.Views;
 
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.UnitTests")]
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.IntegrationTests")]
 namespace ZbW.Testing.Dms.Client.ViewModels
 {
-    public class LoginViewModel : BindableBase
+    internal class LoginViewModel : BindableBase
     {
         private readonly LoginView _loginView;
         private string _benutzername;
@@ -38,9 +41,6 @@ namespace ZbW.Testing.Dms.Client.ViewModels
             searchView.Show();
             _loginView.Close();
         }
-        public bool NoUsername()
-        {
-            return !string.IsNullOrEmpty(Benutzername);
-        }
+        public bool NoUsername() => string.IsNullOrEmpty(Benutzername);
     }
 }

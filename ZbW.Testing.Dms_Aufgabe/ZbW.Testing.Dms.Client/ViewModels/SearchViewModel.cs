@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Prism.Commands;
 using Prism.Mvvm;
 using ZbW.Testing.Dms.Client.Model;
 using ZbW.Testing.Dms.Client.Repositories;
 using ZbW.Testing.Dms.Client.Services;
 
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.UnitTests")]
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.IntegrationTests")]
 namespace ZbW.Testing.Dms.Client.ViewModels
 {
-    public class SearchViewModel : BindableBase
+    internal class SearchViewModel : BindableBase
     {
         private List<MetadataItem> _filteredMetadataItems;
         private MetadataItem _selectedMetadataItem;

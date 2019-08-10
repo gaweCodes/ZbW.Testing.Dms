@@ -1,11 +1,14 @@
 ﻿using System.IO;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Serialization;
 using ZbW.Testing.Dms.Client.Model;
 
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.UnitTests")]
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.IntegrationTests")]
 namespace ZbW.Testing.Dms.Client.Services
 {
-    public class XmlService
+    internal class XmlService
     {
         public string SeralizeMetadataItem(MetadataItem metadataItem)
         {

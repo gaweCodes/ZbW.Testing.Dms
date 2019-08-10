@@ -33,7 +33,7 @@ namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
             Assert.That(ableToLogin, Is.False);
         }
         [Test]
-        public void Login_NoUsername_ReturnsFalse()
+        public void Login_NoUsername_ReturnsTrue()
         {
             // Arrange
             var loginViewModel = new LoginViewModel(null) { Benutzername = _invalidUsername };
@@ -42,7 +42,7 @@ namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
             var ableToLogin = loginViewModel.NoUsername();
 
             // Assert
-            Assert.That(ableToLogin, Is.False);
+            Assert.That(ableToLogin, Is.True);
         }
         [Test]
         public void Login_CmdCancel_IsEnabled()

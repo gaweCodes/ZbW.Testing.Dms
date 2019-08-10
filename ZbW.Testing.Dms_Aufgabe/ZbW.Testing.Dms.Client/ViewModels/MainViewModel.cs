@@ -1,11 +1,14 @@
-﻿using System.Windows.Controls;
+﻿using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 using Prism.Commands;
 using Prism.Mvvm;
 using ZbW.Testing.Dms.Client.Views;
 
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.UnitTests")]
+[assembly: InternalsVisibleTo("ZbW.Testing.Dms.IntegrationTests")]
 namespace ZbW.Testing.Dms.Client.ViewModels
 {
-    public class MainViewModel : BindableBase
+    internal class MainViewModel : BindableBase
     {
         private string _benutzer;
         private UserControl _content;

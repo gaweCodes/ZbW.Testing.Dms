@@ -15,7 +15,7 @@ namespace ZbW.Testing.Dms.IntegrationTests.ViewModelTests
             // Arrange
             var searchViewModel = new SearchViewModel
             {
-                FilteredMetadataItems = new List<MetadataItem>() {new MetadataItem(DateTime.MinValue, "Test")}
+                FilteredMetadataItems = new List<MetadataItem> {new MetadataItem(DateTime.MinValue, "Test")}
             };
 
             // Act

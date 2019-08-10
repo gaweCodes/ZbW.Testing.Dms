@@ -5,7 +5,7 @@ using ZbW.Testing.Dms.Client.ViewModels;
 namespace ZbW.Testing.Dms.UnitTests.ViewModelsTests
 {
     [TestFixture]
-    internal class DocumentDetailViewModelTests
+    public class DocumentDetailViewModelTests
     {
         private const string Username = "Gabriel";
         private readonly DateTime _testDateTime = DateTime.Now;

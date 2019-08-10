@@ -48,7 +48,7 @@ namespace ZbW.Testing.Dms.IntegrationTests.Services
             var folderPathsCount = documentService.GetAllFolderPaths(@"C:\Users\Gabriel\Desktop\Repo").Count();
 
             // Assert
-            Assert.That(folderPathsCount, Is.EqualTo(1));
+            Assert.That(folderPathsCount, Is.GreaterThan(0));
         }
         [Test]
         public void DocumentServicd_AddDocument_DocumentExists()
