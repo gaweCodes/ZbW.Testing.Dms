@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using FakeItEasy;
@@ -36,19 +37,22 @@ namespace ZbW.Testing.Dms.IntegrationTests.Services
             var all = documentSerice.GetAllMetadataItems();
 
             // Assert
-            Assert.That(all, !Is.Empty);
+            Assert.That(all, !Is.Null);
         }
         [Test]
         public void DocumentServicd_GetAllFolderPaths_HasAny()
         {
             // Arrange
             var documentService = new DocumentService();
+            var dirPath = Path.Combine(ConfigurationManager.AppSettings["FileRepoPath"], "test");
+            Directory.CreateDirectory(dirPath);
 
             // Act
-            var folderPathsCount = documentService.GetAllFolderPaths(@"C:\Users\Gabriel\Desktop\Repo").Count();
+            var folderPathsCount = documentService.GetAllFolderPaths(ConfigurationManager.AppSettings["FileRepoPath"]).Count();
 
             // Assert
             Assert.That(folderPathsCount, Is.GreaterThan(0));
+            Directory.Delete(dirPath);
         }
         [Test]
         public void DocumentServicd_AddDocument_DocumentExists()

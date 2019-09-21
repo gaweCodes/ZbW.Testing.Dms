@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace ZbW.Testing.Dms.Client.Services
         private readonly XmlService _xmlService;
         public DocumentService()
         {
-            _targetPath = @"C:\Users\Gabriel\Desktop\Repo";
+            _targetPath = ConfigurationManager.AppSettings["FileRepoPath"];
+            Directory.CreateDirectory(_targetPath);
             _fileService = new FileService();
             _xmlService = new XmlService();
         }
